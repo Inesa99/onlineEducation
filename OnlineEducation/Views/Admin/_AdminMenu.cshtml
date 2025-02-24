@@ -1,0 +1,81 @@
+﻿@{
+    var activePage = ViewData["ActivePage"] as string;
+}
+
+<nav class="col-md-3 col-lg-2 d-md-block sidebar">
+    <h4 class="text-center py-3">Admin Menu</h4>
+    <ul class="nav flex-column">
+        <li class="nav-item">
+            <a asp-controller="Admin"
+               asp-action="Dashboard"
+               style="color: @(activePage == "Dashboard" ? "blue" : "black")"
+               class="nav-link">
+                Users
+            </a>
+        </li>
+        <li class="nav-item">
+            <a asp-controller="Admin"
+               asp-action="AddStudent"
+               style="color: @(activePage == "AddStudent" ? "blue" : "black")"
+               class="nav-link">
+                Add Student
+            </a>
+        </li>
+        <li class="nav-item">
+            <a asp-controller="Admin"
+               asp-action="AddPackage"
+               style="color: @(activePage == "AddPackage" ? "blue" : "black")"
+               class="nav-link">
+                Add Package
+            </a>
+        </li>
+        <li class="nav-item">
+            <a asp-controller="Admin"
+               asp-action="PackagesList"
+               style="color: @(activePage == "PackagesList" ? "blue" : "black")"
+               class="nav-link">
+                Package List
+            </a>
+        </li>
+        <li class="nav-item">
+            <a asp-controller="Admin"
+               asp-action="AddSubject"
+               style="color: @(activePage == "AddSubject" ? "blue" : "black")"
+               class="nav-link">
+                Add Subject
+            </a>
+        </li>
+        <li class="nav-item">
+            <a asp-controller="Admin"
+               asp-action="SubjectList"
+               style="color: @(activePage == "SubjectList" ? "blue" : "black")"
+               class="nav-link">
+                Subject List
+            </a>
+        </li>
+    </ul>
+</nav>
+
+<style>
+    body {
+        min-height: 100vh;
+    }
+
+    .sidebar {
+        min-height: 100vh;
+        background-color: #343a40;
+        color: white;
+    }
+
+        .sidebar a {
+            color: #ddd;
+            text-decoration: none;
+            padding: 10px;
+            display: block;
+        }
+
+            .sidebar a:hover {
+                background-color: #495057;
+                color: white;
+            }
+</style>
