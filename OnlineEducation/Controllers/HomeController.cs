@@ -20,6 +20,7 @@ namespace OnlineEducation.Controllers
         {
             return View();
         }
+
         [HttpPost]
         public async Task<IActionResult> Login(string username, string password)
         {
@@ -29,7 +30,7 @@ namespace OnlineEducation.Controllers
             if (student != null)
             {
                 // Login Success
-                return RedirectToAction("Login", "Index");
+                return RedirectToAction("Index", "Student",  student );
             }
 
             ViewBag.Error = "Invalid credentials";

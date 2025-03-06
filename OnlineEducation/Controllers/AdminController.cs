@@ -138,5 +138,26 @@ namespace OnlineEducation.Controllers
             ViewBag.SubjectsList = subjects;
             return View();
         }
+
+        [HttpGet]
+        public async Task<IActionResult> AddLesson()
+        {
+            List<Subject> subjects = await _context.Subjects.ToListAsync();
+            ViewBag.SubjectList = subjects;
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddLesson(Lesson lesson, int subjectId)
+        {
+            if (lesson is not null)
+            {
+                lesson.SubjectId = subjectId;
+                await _context.Lessons.AddAsync(lesson);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("SubjectList");
+            }
+            return View();
+        }
     }
 }
