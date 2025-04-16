@@ -1,27 +1,22 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Login";
 }
+<link href="~/css/login.css" rel="stylesheet" />
 
-<div style="width:30%;margin-top:100px;" class="bg-light p-4 mx-auto">
-    <h1> Student Login</h1>
+
+<div class="loginForm p-4 ">
+    <h3 class="blueText"> Մուտք Համակարգ </h3>
     <form asp-action="Login" asp-controller="Home" method="post">
         <div class="mb-4">
-            <label for="username" class="mb-2">Email</label><br />
-            <input name="username" placeholder="example@gmail.com" class="w-100 form-control" />
+            <label for="username" class="mb-2 blueText">Էլ․ հասցե</label><br />
+            <input name="username" placeholder="example@gmail.com" class="loginInput form-control" />
         </div>
         <div class="mb-4">
-            <label for="password" class="mb-2">Password</label><br />
-            <input name="password" placeholder="********" class="w-100 form-control" />
+            <label for="password" class="mb-2 blueText">Գաղտնաբառ</label><br />
+            <input name="password" placeholder="********" class="loginInput form-control" />
         </div>
         <div class="mb-4">
-            <input type="submit" value="Login" class="btn btn-primary mb-2 w-100" />
+            <input type="submit" value="Մուտք" class="loginButton btn btn-primary mb-2 w-100" />
         </div>
     </form>
 </div>
-
-<style>
-    body {
-        background-image: url("~/images/loginbackground.jpg");
-        background-size: 100%;
-    }
-</style>

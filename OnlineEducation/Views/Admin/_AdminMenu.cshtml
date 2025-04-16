@@ -8,15 +8,15 @@
         <li class="nav-item">
             <a asp-controller="Admin"
                asp-action="Dashboard"
-               style="color: @(activePage == "Dashboard" ? "blue" : "black")"
+               style="color: @(activePage == "Dashboard" ? "blue" : "wite")"
                class="nav-link">
-                Users
+                User List
             </a>
         </li>
         <li class="nav-item">
             <a asp-controller="Admin"
                asp-action="AddStudent"
-               style="color: @(activePage == "AddStudent" ? "blue" : "black")"
+               style="color: @(activePage == "AddStudent" ? "blue" : "wite")"
                class="nav-link">
                 Add Student
             </a>
@@ -24,7 +24,7 @@
         <li class="nav-item">
             <a asp-controller="Admin"
                asp-action="AddPackage"
-               style="color: @(activePage == "AddPackage" ? "blue" : "black")"
+               style="color: @(activePage == "AddPackage" ? "blue" : "wite")"
                class="nav-link">
                 Add Package
             </a>
@@ -32,7 +32,7 @@
         <li class="nav-item">
             <a asp-controller="Admin"
                asp-action="PackagesList"
-               style="color: @(activePage == "PackagesList" ? "blue" : "black")"
+               style="color: @(activePage == "PackagesList" ? "blue" : "wite")"
                class="nav-link">
                 Package List
             </a>
@@ -40,7 +40,7 @@
         <li class="nav-item">
             <a asp-controller="Admin"
                asp-action="AddSubject"
-               style="color: @(activePage == "AddSubject" ? "blue" : "black")"
+               style="color: @(activePage == "AddSubject" ? "blue" : "wite")"
                class="nav-link">
                 Add Subject
             </a>
@@ -48,9 +48,17 @@
         <li class="nav-item">
             <a asp-controller="Admin"
                asp-action="SubjectList"
-               style="color: @(activePage == "SubjectList" ? "blue" : "black")"
+               style="color: @(activePage == "SubjectList" ? "blue" : "wite")"
                class="nav-link">
                 Subject List
+            </a>
+        </li>
+        <li class="nav-item">
+            <a asp-controller="Admin"
+               asp-action="AddLesson"
+               style="color: @(activePage == "SubjectList" ? "blue" : "wite")"
+               class="nav-link">
+                Add Lesson
             </a>
         </li>
     </ul>

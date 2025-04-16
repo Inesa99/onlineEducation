@@ -1,0 +1,80 @@
+﻿.flexDivHeader {
+    width: 20%;
+    height: 100%;
+    background-color: #305397;
+    color: #ffffff;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+}
+
+.flexDivContent{
+    width:75%;
+    margin-left:23%;
+}
+
+header {
+    width: 100%;
+}
+
+header h1 {
+    margin-bottom: 100px;
+    margin-top: 10px;
+    margin-left: 5px;
+}
+
+header div {
+    display: flex;
+    width: 100%;
+    padding: 5px;
+    cursor: pointer;
+    margin-bottom:10px;
+}
+
+header div img {
+    width: 30px;
+    margin-right: 10px;
+}
+
+.flexDivContent {
+    width: 70%;
+}
+
+header div:hover {
+    background-color: #DCE4ED;
+    color: #305397;
+}
+
+.selectedMenuItem {
+    background-color: #DCE4ED;
+    color: #305397;
+}
+
+.packageName {
+    width: 35%;
+    margin: 20px auto;
+    background-color: #4873BE;
+    color: #ffffff;
+    padding: 30px 0;
+    border-radius:10px;
+}
+
+h2,h3{
+    text-align:center;
+}
+
+.subjects {
+    display: flex;
+    flex-wrap: wrap;
+    width: 60%;
+    margin: 0 auto;
+    justify-content: space-around;
+    border-radius:10px;
+}
+.subjectItem {
+    width: 200px;
+    padding: 20px 0;
+    margin: 20px;
+    background-color: #75B1FF;
+    color: #00308E;
+}

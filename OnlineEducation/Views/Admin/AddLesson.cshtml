@@ -25,15 +25,15 @@
 
             <!-- Main Content -->
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                <h2>Add Subject</h2>
+                <h2 class=" my-4">Add Lesson</h2>
                 <form asp-action="AddSubject" method="post">
-                    <div class="form-group">
+                    <div class="form-group  my-4">
                         <textarea id="editor" name="content"></textarea>
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label">Subject</label>
-                        <select name="packageId" class="form-control">
+                        <h3 class="control-label my-2">Subject</h3>
+                        <select name="packageId" class="form-control my-4">
                             <option value="">-- Select Subject --</option>
                             @if (subjects != null)
                             {
@@ -46,7 +46,7 @@
                     </div>
 
                     <div class="mb-4">
-                        <input type="submit" value="Add" class="btn btn-primary mb-2 w-100" />
+                        <input type="submit" value="Add" class="btn btn-primary my-4 w-100" />
                     </div>
                 </form>
             </main>
