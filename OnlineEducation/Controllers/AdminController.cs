@@ -159,5 +159,27 @@ namespace OnlineEducation.Controllers
             }
             return View();
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Question()
+        {
+            var questionsquery = await _context.Questions.ToListAsync();
+            ViewBag.QuestionsWithoutAnswer = questionsquery.Where(q => string.IsNullOrEmpty(q.Answer)).ToList();
+            ViewBag.QuestionsWithAnswer = questionsquery.Where(q => !string.IsNullOrEmpty(q.Answer)).ToList();
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Question(int questionId, string answer)
+        {
+            var question = await _context.Questions.FindAsync(questionId);
+            if (question != null && !string.IsNullOrWhiteSpace(answer))
+            {
+                question.Answer = answer;
+                await _context.SaveChangesAsync();
+            }
+
+            return RedirectToAction("Question");
+        }
     }
 }
