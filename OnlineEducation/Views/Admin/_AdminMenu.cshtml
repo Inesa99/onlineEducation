@@ -10,7 +10,7 @@
                asp-action="Dashboard"
                style="color: @(activePage == "Dashboard" ? "blue" : "wite")"
                class="nav-link">
-                User List
+                Օգտատերերի ցանկ
             </a>
         </li>
         <li class="nav-item">
@@ -18,7 +18,7 @@
                asp-action="AddStudent"
                style="color: @(activePage == "AddStudent" ? "blue" : "wite")"
                class="nav-link">
-                Add Student
+                Ավելացնել ուսանող
             </a>
         </li>
         <li class="nav-item">
@@ -26,7 +26,7 @@
                asp-action="AddPackage"
                style="color: @(activePage == "AddPackage" ? "blue" : "wite")"
                class="nav-link">
-                Add Package
+                Ավելացնել Փաթեթ
             </a>
         </li>
         <li class="nav-item">
@@ -34,7 +34,7 @@
                asp-action="PackagesList"
                style="color: @(activePage == "PackagesList" ? "blue" : "wite")"
                class="nav-link">
-                Package List
+                Փաթեթների ցանկ
             </a>
         </li>
         <li class="nav-item">
@@ -42,7 +42,7 @@
                asp-action="AddSubject"
                style="color: @(activePage == "AddSubject" ? "blue" : "wite")"
                class="nav-link">
-                Add Subject
+                Ավելացնել առարկա
             </a>
         </li>
         <li class="nav-item">
@@ -50,7 +50,7 @@
                asp-action="SubjectList"
                style="color: @(activePage == "SubjectList" ? "blue" : "wite")"
                class="nav-link">
-                Subject List
+                Առարկաների ցանկ
             </a>
         </li>
         <li class="nav-item">
@@ -58,9 +58,26 @@
                asp-action="AddLesson"
                style="color: @(activePage == "SubjectList" ? "blue" : "wite")"
                class="nav-link">
-                Add Lesson
+                Ավելացնել դաս
             </a>
         </li>
+        <li class="nav-item">
+            <a asp-controller="Admin"
+               asp-action="Question"
+               style="color: @(activePage == "SubjectList" ? "blue" : "wite")"
+               class="nav-link">
+                Ուսանողի կողմից տրված հարցեր
+            </a>
+        </li>
+        <li class="nav-item">
+            <a asp-controller="Admin"
+               asp-action="AddTestQuestion"
+               style="color: @(activePage == "SubjectList" ? "blue" : "wite")"
+               class="nav-link">
+                Թեստեր
+            </a>
+        </li>
+
     </ul>
 </nav>
 

@@ -1,0 +1,19 @@
+﻿textarea{
+    width:100%;
+}
+
+.questionDiv {
+    width: 100%;
+    margin: 10px;
+    border-radius: 20px;
+    padding: 10px;
+    background-color: #DCE4ED;
+}
+
+.questionBody {
+    font-size:20px;
+}
+
+.questionHeading{
+    font-size:30px;
+}

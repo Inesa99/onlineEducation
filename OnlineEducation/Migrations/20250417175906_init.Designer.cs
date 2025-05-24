@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OnlineEducation.Models;
 
@@ -10,9 +11,11 @@ using OnlineEducation.Models;
 namespace OnlineEducation.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250417175906_init")]
+    partial class init
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -169,34 +172,6 @@ namespace OnlineEducation.Migrations
                     b.ToTable("Subjects");
                 });
 
-            modelBuilder.Entity("OnlineEducation.Models.TestQuestion", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Answer")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Question")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("StudentId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SubjectId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("SubjectId");
-
-                    b.ToTable("TestQuestions");
-                });
-
             modelBuilder.Entity("OnlineEducation.Models.Lesson", b =>
                 {
                     b.HasOne("OnlineEducation.Models.Subject", "Subject")
@@ -239,17 +214,6 @@ namespace OnlineEducation.Migrations
                         .IsRequired();
 
                     b.Navigation("Package");
-                });
-
-            modelBuilder.Entity("OnlineEducation.Models.TestQuestion", b =>
-                {
-                    b.HasOne("OnlineEducation.Models.Subject", "Subject")
-                        .WithMany()
-                        .HasForeignKey("SubjectId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Subject");
                 });
 
             modelBuilder.Entity("OnlineEducation.Models.Package", b =>

@@ -165,7 +165,6 @@ namespace OnlineEducation.Controllers
         {
             var questionsquery = await _context.Questions.ToListAsync();
             ViewBag.QuestionsWithoutAnswer = questionsquery.Where(q => string.IsNullOrEmpty(q.Answer)).ToList();
-            ViewBag.QuestionsWithAnswer = questionsquery.Where(q => !string.IsNullOrEmpty(q.Answer)).ToList();
             return View();
         }
 
@@ -181,5 +180,32 @@ namespace OnlineEducation.Controllers
 
             return RedirectToAction("Question");
         }
+
+        [HttpGet]
+        public async Task<IActionResult> AddTestQuestion()
+        {
+            List<Subject> subjects = await _context.Subjects.ToListAsync();
+            ViewBag.SubjectList = subjects;
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddTestQuestion(string testQuestion, int subjectId)
+        {
+            if (testQuestion is not null)
+            {
+                TestQuestion tq = new()
+                {
+                    Question = testQuestion,
+                    SubjectId = subjectId,
+                };
+
+                await _context.TestQuestions.AddAsync(tq);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Dashboard");
+            }
+            return View();
+        }
+
     }
 }

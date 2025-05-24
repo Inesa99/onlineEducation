@@ -8,16 +8,23 @@
     <header>
         <h1>@ViewBag.Student.Username</h1>
         <div class="selectedMenuItem">
-            <img src="~/images/packageLogoSelected.svg"/>
-            <h3>Իմ փաթեթները</h3>
+            <a asp-controller="Student" asp-action="Home" class="d-flex">
+                <img src="~/images/packageLogoSelected.svg" />
+                <h3>Իմ փաթեթները</h3>
+            </a>
         </div>
         <div>
-            <img src="~/images/questionsLogo.svg"/>
-            <h3>Հարցեր</h3>
+            <a asp-controller="Student" asp-action="AddQuestion" class="d-flex">
+                <img src="~/images/questionsLogo.svg" />
+                <h3>Հարցեր</h3>
+            </a>
+
         </div>
         <div>
-            <img src="~/images/questionsLogo.svg"/>
-            <h3>Իմ հարցերը</h3>
+            <a asp-controller="Student" asp-action="QuestionList" class="d-flex">
+                <img src="~/images/questionsLogo.svg" />
+                <h3>Իմ հարցերը</h3>
+            </a>
         </div>
 
     </header>
@@ -32,9 +39,11 @@
         @foreach (var item in ViewBag.Subjects)
         {
             <div class="subjectItem">
-                <h3>
-                    @item.Name
-                </h3>
+                <a asp-controller="Lesson" asp-action="Index" asp-route-subjectId="@item.Id" style="text-decoration:none">
+                    <h3>
+                        @item.Name
+                    </h3>
+                </a>
             </div>
         }
     </div>

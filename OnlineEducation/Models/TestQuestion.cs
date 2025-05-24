@@ -2,10 +2,10 @@
 
 namespace OnlineEducation.Models
 {
-    public class Question
+    public class TestQuestion
     {
         public int Id { get; set; }
-        public string Description { get; set; }
+        public string Question { get; set; }
         public string? Answer { get; set; }
 
         [ForeignKey("Subject")]

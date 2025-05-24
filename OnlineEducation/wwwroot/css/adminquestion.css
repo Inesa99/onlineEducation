@@ -1,0 +1,9 @@
+﻿.questionDiv {
+    width: 100%;
+    padding: 10px;
+    border-radius: 20px;
+    border: 2px solid #305397;
+}
+textarea{
+    width:100%;
+}

@@ -1,0 +1,46 @@
+﻿<section>
+
+
+    @foreach (var question in ViewBag.TestQuestions)
+    {
+        <div class="questionDiv">
+            <form asp-action="Test" asp-controller="Lesson" method="post">
+                <input type="hidden" name="questionId" value="@question.Id" />
+                <h3>Հարց՝</h3>
+                <p class="mb-4">
+                    @question.Question
+                </p>
+
+                <h3>Պատասխան՝</h3>
+                @if(question.Answer == null)
+                {
+                    <textarea name="answer" rows="3" required></textarea>
+                }
+                else
+                {
+                    <pclass ="mb-4">
+                        @question.Answer
+                    </pclass>
+                }
+                
+
+                <div class="mb-4">
+                    <input type="submit" value="Ուղարկել" class="btn btn-primary my-4 w-100" />
+                </div>
+            </form>
+        </div>
+    }
+</section>
+
+
+
+
+<style>
+section{
+    width:60%;
+    margin:0 auto;
+}
+textarea{
+    width:100%;
+}
+</style>

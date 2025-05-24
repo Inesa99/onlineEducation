@@ -31,25 +31,26 @@
     </header>
 </div>
 <div class="flexDivContent">
-    <form asp-action="AddQuestion" asp-controller="Student" method="post">
-        <div>
-            <h3 class="control-label my-2">Հարց</h3>
-            <select name="subjectId" class="form-control my-4">
-                <option value="">-- Ընտրեք Առարկան --</option>
-                @if (ViewBag.Subjects != null)
-                {
-                    @foreach (var subject in ViewBag.Subjects)
-                    {
-                        <option value="@subject.Id">@subject.Name</option>
-                    }
-                }
-            </select>
-            <textarea name="questionText"></textarea>
-
-            <div class="mb-4">
-                <input type="submit" value="Ուղարկել" class="okButton btn btn-primary my-4 py-4 w-100" />
-            </div>
+    @foreach (var item in ViewBag.QuestionsWithAnswer){
+        <div class="questionDiv">
+            <p class="questionHeading">Հարց</p>
+            <p class="questionBody">
+                @item.Description
+            </p>
+            <p class="questionHeading">Պատասխան</p>
+            <p class="questionBody">
+                @item.Answer
+            </p>
         </div>
-    </form>
-    
+    }
+    <h2>Հարցեր որոնց դեռ չեն պատասխանել</h2>
+    @foreach (var item in ViewBag.QuestionsWithoutAnswer)
+    {
+        <div class="questionDiv">
+            <p class="questionHeading">Հարց</p>
+            <p class="questionBody">
+                @item.Description
+            </p>
+        </div>
+    }
 </div>

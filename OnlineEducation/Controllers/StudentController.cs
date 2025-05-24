@@ -29,6 +29,13 @@ namespace OnlineEducation.Controllers
         }
 
         [HttpGet]
+        public async Task<IActionResult> Home()
+        {
+            return RedirectToAction("Index", _student);
+        }
+
+
+        [HttpGet]
         public async Task<IActionResult> AddQuestion()
         {
             Package? package = await _context.Packages
@@ -36,6 +43,7 @@ namespace OnlineEducation.Controllers
                                         .FirstOrDefaultAsync();
             List<Subject> subjects = await _context.Subjects.Where(s => s.PackageId == package.Id).ToListAsync();
             ViewBag.Subjects = subjects;
+            ViewBag.Student = _student;
             return View();
         }
 
@@ -51,8 +59,17 @@ namespace OnlineEducation.Controllers
 
             await _context.Questions.AddAsync(newQuestion);
             await _context.SaveChangesAsync();
-            return View();
+            return RedirectToAction("Index", _student);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> QuestionList()
+        {
+            var questionsquery = await _context.Questions.ToListAsync();
+            ViewBag.QuestionsWithoutAnswer = questionsquery.Where(q => string.IsNullOrEmpty(q.Answer)).ToList();
+            ViewBag.QuestionsWithAnswer = questionsquery.Where(q => !string.IsNullOrEmpty(q.Answer)).ToList();
+            ViewBag.Student = _student;
+            return View();
+        }
     }
 }

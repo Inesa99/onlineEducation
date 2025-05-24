@@ -11,8 +11,8 @@ using OnlineEducation.Models;
 namespace OnlineEducation.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250224190123_init")]
-    partial class init
+    [Migration("20250417225404_addtest")]
+    partial class addtest
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -92,6 +92,34 @@ namespace OnlineEducation.Migrations
                     b.ToTable("Packages");
                 });
 
+            modelBuilder.Entity("OnlineEducation.Models.Question", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Answer")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("StudentId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SubjectId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SubjectId");
+
+                    b.ToTable("Questions");
+                });
+
             modelBuilder.Entity("OnlineEducation.Models.Student", b =>
                 {
                     b.Property<int>("Id")
@@ -144,10 +172,49 @@ namespace OnlineEducation.Migrations
                     b.ToTable("Subjects");
                 });
 
+            modelBuilder.Entity("OnlineEducation.Models.TestQuestion", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Answer")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Question")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("StudentId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SubjectId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SubjectId");
+
+                    b.ToTable("TestQuestions");
+                });
+
             modelBuilder.Entity("OnlineEducation.Models.Lesson", b =>
                 {
                     b.HasOne("OnlineEducation.Models.Subject", "Subject")
                         .WithMany("Lessons")
+                        .HasForeignKey("SubjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Subject");
+                });
+
+            modelBuilder.Entity("OnlineEducation.Models.Question", b =>
+                {
+                    b.HasOne("OnlineEducation.Models.Subject", "Subject")
+                        .WithMany()
                         .HasForeignKey("SubjectId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -175,6 +242,17 @@ namespace OnlineEducation.Migrations
                         .IsRequired();
 
                     b.Navigation("Package");
+                });
+
+            modelBuilder.Entity("OnlineEducation.Models.TestQuestion", b =>
+                {
+                    b.HasOne("OnlineEducation.Models.Subject", "Subject")
+                        .WithMany()
+                        .HasForeignKey("SubjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Subject");
                 });
 
             modelBuilder.Entity("OnlineEducation.Models.Package", b =>
